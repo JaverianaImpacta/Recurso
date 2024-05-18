@@ -43,7 +43,7 @@ public class ControladorRecurso {
 
     @PutMapping("actualizar")
     public ResponseEntity<Recurso> actualizarRecurso(@RequestParam Integer id, @RequestBody Recurso recurso){
-        if(id == null || recurso == null || id != recurso.getId()){
+        if(id == null || recurso == null || !id.equals(recurso.getId())){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         if(servicio.actualizarRecurso(id, recurso) == null){
